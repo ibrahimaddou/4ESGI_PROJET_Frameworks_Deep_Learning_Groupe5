@@ -2,7 +2,7 @@ import os
 import shutil
 from sklearn.model_selection import train_test_split
 
-def separer_donnees(dossier_source="data/raw", dossier_dest="data/processed", ratio_test=0.2):
+def separer_donnees(dossier_source="dataset", dossier_dest="dataset/processed", ratio_test=0.2):
     """
     Sépare les données brutes en jeux d'entraînement (80%) et de test (20%).
     """
@@ -14,8 +14,9 @@ def separer_donnees(dossier_source="data/raw", dossier_dest="data/processed", ra
     os.makedirs(dossier_train, exist_ok=True)
     os.makedirs(dossier_test, exist_ok=True)
     
-    # Parcourir chaque sous-dossier (classe d'objet) dans raw/
-    classes = [d for d in os.listdir(dossier_source) if os.path.isdir(os.path.join(dossier_source, d))]
+    # Parcourir chaque sous-dossier (classe d'objet) dans dataset/
+    # On ajoute la condition "and d != 'processed'" pour ignorer le dossier de destination
+    classes = [d for d in os.listdir(dossier_source) if os.path.isdir(os.path.join(dossier_source, d)) and d != "processed"]
     
     for classe in classes:
         chemin_classe_source = os.path.join(dossier_source, classe)
