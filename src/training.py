@@ -7,6 +7,9 @@ from tensorflow.keras.callbacks import TensorBoard, EarlyStopping, ModelCheckpoi
 import datetime
 
 # from model_builder import build_model 
+##############################################################################
+from model_builder import build_model
+##############################################################################
 
 def train_model():
     # 1. PRÉPARATION DES DONNÉES ET NORMALISATION
@@ -37,12 +40,20 @@ def train_model():
     # 2. CHARGEMENT DU MODÈLE 
     # model = build_model(num_classes=4) 
     # Pour tester le script avant que Zakaria ait fini, on utilise un modèle vide temporaire :
-    model = tf.keras.Sequential([
-        tf.keras.layers.Input(shape=(224, 224, 3)),
-        tf.keras.layers.Flatten(),
-        tf.keras.layers.Dense(4, activation='softmax')
-    ])
-    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    ##############################################################################
+    model = build_model(
+        architecture="mobilenetv2",
+        num_classes=train_generator.num_classes,
+        fine_tune=False,
+        learning_rate=1e-4,
+    )
+    ##############################################################################
+    # model = tf.keras.Sequential([
+    #     tf.keras.layers.Input(shape=(224, 224, 3)),
+    #     tf.keras.layers.Flatten(),
+    #     tf.keras.layers.Dense(4, activation='softmax')
+    # ])
+    # model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     # 3. CONFIGURATION DES CALLBACKS CRUCIAUX
     # TensorBoard : Enregistre les métriques pour les graphiques du rapport
@@ -59,7 +70,8 @@ def train_model():
     # ModelCheckpoint : Sauvegarde automatiquement le meilleur modèle
     os.makedirs('models', exist_ok=True)
     model_checkpoint = ModelCheckpoint(
-        filepath='models/best_model.keras',
+        #filepath='models/best_model.keras',
+        filepath='models/best_model.h5',
         monitor='val_accuracy',
         save_best_only=True
     )
@@ -73,7 +85,7 @@ def train_model():
         callbacks=[tensorboard_callback, early_stopping, model_checkpoint],
         verbose=1
     )
-    print("Entraînement terminé. Le meilleur modèle est sauvegardé dans 'models/best_model.keras'.")
+    print("Entraînement terminé. Le meilleur modèle est sauvegardé dans 'models/best_model.keras // .h5'.")
 
 if __name__ == "__main__":
     train_model()
