@@ -43,3 +43,23 @@ python src/training.py
 ```bash
 python src/evaluate.py
 ```
+
+### 5. Exportation et tests de robustesse
+
+```bash
+python src/export_model.py
+```
+
+### 6. Visualisation de l'apprentissage (TensorBoard)
+
+```bash
+tensorboard --logdir logs/fit
+```
+
+**Action :** Lance le serveur TensorBoard accessible via votre navigateur (généralement à l'adresse <http://localhost:6006>) pour analyser les courbes d'Accuracy et de Loss (Biais et Variance).
+
+### 7. Lancement de la détection en temps réel
+
+```bash
+python src/inference_realtime.py
+```
