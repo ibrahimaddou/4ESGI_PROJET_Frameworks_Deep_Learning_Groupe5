@@ -1,0 +1,197 @@
+{
+  "model_paths": {
+    "keras": "models/export\\model_final.keras",
+    "h5": "models/export\\model_final.h5"
+  },
+  "inference_speed": {
+    "fps": 10.6,
+    "ms_per_image": 94.33
+  },
+  "robustness": {
+    "normal": {
+      "accuracy_pct": 80.0,
+      "total": 120,
+      "failures_count": 24,
+      "failures_sample": [
+        {
+          "image": "badge_009.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.589
+        },
+        {
+          "image": "badge_012.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.565
+        },
+        {
+          "image": "badge_018.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.458
+        },
+        {
+          "image": "badge_019.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.507
+        },
+        {
+          "image": "badge_029.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.483
+        }
+      ]
+    },
+    "bright_x1.5": {
+      "accuracy_pct": 65.0,
+      "total": 120,
+      "failures_count": 42,
+      "failures_sample": [
+        {
+          "image": "background_055.jpg",
+          "true": "background",
+          "predicted": "briquet",
+          "confidence": 0.448
+        },
+        {
+          "image": "badge_009.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.674
+        },
+        {
+          "image": "badge_012.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.563
+        },
+        {
+          "image": "badge_018.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.584
+        },
+        {
+          "image": "badge_019.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.636
+        }
+      ]
+    },
+    "dark_x0.4": {
+      "accuracy_pct": 52.5,
+      "total": 120,
+      "failures_count": 57,
+      "failures_sample": [
+        {
+          "image": "badge_009.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.52
+        },
+        {
+          "image": "badge_012.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.514
+        },
+        {
+          "image": "badge_018.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.572
+        },
+        {
+          "image": "badge_019.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.51
+        },
+        {
+          "image": "badge_026.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.507
+        }
+      ]
+    },
+    "blur_k15": {
+      "accuracy_pct": 27.5,
+      "total": 120,
+      "failures_count": 87,
+      "failures_sample": [
+        {
+          "image": "badge_009.jpg",
+          "true": "badge",
+          "predicted": "background",
+          "confidence": 0.532
+        },
+        {
+          "image": "badge_012.jpg",
+          "true": "badge",
+          "predicted": "background",
+          "confidence": 0.622
+        },
+        {
+          "image": "badge_018.jpg",
+          "true": "badge",
+          "predicted": "background",
+          "confidence": 0.68
+        },
+        {
+          "image": "badge_019.jpg",
+          "true": "badge",
+          "predicted": "background",
+          "confidence": 0.747
+        },
+        {
+          "image": "badge_026.jpg",
+          "true": "badge",
+          "predicted": "background",
+          "confidence": 0.538
+        }
+      ]
+    },
+    "noise_sigma30": {
+      "accuracy_pct": 55.0,
+      "total": 120,
+      "failures_count": 54,
+      "failures_sample": [
+        {
+          "image": "background_055.jpg",
+          "true": "background",
+          "predicted": "briquet",
+          "confidence": 0.588
+        },
+        {
+          "image": "badge_009.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.314
+        },
+        {
+          "image": "badge_012.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.426
+        },
+        {
+          "image": "badge_018.jpg",
+          "true": "badge",
+          "predicted": "background",
+          "confidence": 0.343
+        },
+        {
+          "image": "badge_026.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.419
+        }
+      ]
+    }
+  }
+}

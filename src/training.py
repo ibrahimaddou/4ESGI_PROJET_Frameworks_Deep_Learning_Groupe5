@@ -70,8 +70,7 @@ def train_model():
     # ModelCheckpoint : Sauvegarde automatiquement le meilleur modèle
     os.makedirs('models', exist_ok=True)
     model_checkpoint = ModelCheckpoint(
-        #filepath='models/best_model.keras',
-        filepath='models/best_model.h5',
+        filepath='models/best_model.keras',
         monitor='val_accuracy',
         save_best_only=True
     )
