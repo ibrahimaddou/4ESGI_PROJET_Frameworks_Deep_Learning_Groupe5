@@ -22,3 +22,19 @@ Choix et justification des objets pour la classification.
 
 *   **Analyse des erreurs :**
     La matrice de confusion nous montre une seule erreur marginale : un faux positif où le modèle a prédit "téléphone" alors qu'il s'agissait du "background" (1 erreur sur 30). Cela peut s'expliquer par un reflet, une ombre ou un élément de texture dans le fond de l'image qui a été interprété comme la surface lisse du téléphone.
+
+## Experiment 2 : Modèle Final
+#### 1. Analyse des performances et du Biais / Variance
+* **Observation (TensorBoard) :** L'entraînement du modèle `mobilenetv2_transfer` (avec couches de base gelées et ajout d'une couche Dense de 256 neurones + Dropout 0.3) montre une convergence exceptionnelle. La perte de validation (*val_loss*) descend continuellement jusqu'à **0.0062** à l'Epoch 20 (voir capture `epoch_loss`), tandis que la précision (*val_accuracy*) atteint **100 %** (voir capture `epoch_accuracy`).
+* **Diagnostic :** 
+  * **Absence de Biais (Underfitting) :** Le modèle a une capacité d'abstraction largement suffisante pour différencier les 4 classes dès la 3ᵉ epoch.
+  * **Absence de Variance (Overfitting) :** Contrairement à un réseau classique qui mémorise, l'association du **Transfer Learning** (poids ImageNet) et de la couche de **Dropout (0.3)** empêche le modèle d'apprendre par cœur. Les courbes *Train* et *Validation* restent parfaitement jointives.
+
+#### 2. Analyse de la Matrice de Confusion
+Sur le jeu de test de 120 images (30 images par classe), le modèle obtient un score de **100 % de précision et de rappel** (F1-score de 1.00 sur toutes les classes). L'ancienne confusion marginale entre le *background* et le *téléphone* a été résolue grâce à la régularisation de la nouvelle architecture de classification.
+
+#### 3. Tests de Robustesse et Limites du Modèle
+Pour évaluer les limites réelles du système en conditions dégradées, nous avons soumis le jeu de test à 4 perturbations artificielles (`src/export_model.py`) :
+* **Sensibilité à l'éclairage (65.0 % en surexposition / 52.5 % en sous-exposition) :** Lorsque la luminosité augmente fortement (`bright_x1.5`), le modèle échoue principalement sur la classe **badge** qu'il confond avec le **téléphone** (ex: `badge_009.jpg` prédit *téléphone* avec 67.4 % de confiance). Cela s'explique par l'apparition de reflets blancs sur le plastique du badge, rappelant la surface brillante de l'écran du téléphone.
+* **Sensibilité à la netteté (27.5 % avec flou gaussien `k=15`) :** Lorsque les arêtes sont lissées, le modèle perd ses repères spatiaux et classe la majorité des objets comme du **background** (ex: `badge_018.jpg` prédit *background* à 68 %).
+* **Vitesse d'inférence :** Le modèle s'exécute à une moyenne de **10.6 FPS** (~94.3 ms/image) sur processeur (CPU), ce qui est largement suffisant pour une détection fluide en temps réel via webcam.
