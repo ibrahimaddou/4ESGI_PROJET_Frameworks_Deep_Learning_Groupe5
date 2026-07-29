@@ -22,6 +22,38 @@ Choix et justification des objets pour la classification.
 
 *   **Analyse des erreurs :**
     La matrice de confusion nous montre une seule erreur marginale : un faux positif où le modèle a prédit "téléphone" alors qu'il s'agissait du "background" (1 erreur sur 30). Cela peut s'expliquer par un reflet, une ombre ou un élément de texture dans le fond de l'image qui a été interprété comme la surface lisse du téléphone.
+## Expérience 1.3 : Ajout de Data Augmentation et Dropout
+
+### Description
+Pour corriger l'Overfitting observé lors de l'expérience 1.2, nous avons ajouté des transformations aléatoires sur les images (**Data Augmentation**) telles que des rotations et des zooms, ainsi qu'une couche **Dropout** avec un taux de 0.5.
+
+### Analyse des résultats du modèle
+
+* **Observation :**
+L'Overfitting diminue fortement. La précision en validation remonte à environ **82 %**, mais elle n'arrive plus à progresser au-delà malgré les epochs supplémentaires.
+
+* **Analyse (Biais et Variance) :**
+Le modèle est désormais beaucoup plus stable. La **Variance** est fortement réduite grâce aux techniques de régularisation. En revanche, les performances plafonnent, ce qui indique un léger **Biais (Underfitting)** : un petit CNN entraîné depuis zéro ne possède pas une capacité suffisante pour extraire les caractéristiques visuelles complexes des objets, notamment les surfaces brillantes ou présentant des reflets.
+
+* **Conclusion :**
+La régularisation améliore la généralisation mais révèle les limites de l'architecture utilisée. Nous décidons donc d'utiliser le **Transfer Learning** afin de bénéficier d'un réseau profond pré-entraîné sur plusieurs millions d'images.
+
+---
+
+## Expérience 1.4 : Premier test de Transfer Learning (MobileNetV2)
+
+### Analyse des résultats du modèle
+
+* **Observation :**
+En observant les courbes d'apprentissage sur TensorBoard (voir capture **tensorboard_1.2** dans le dossier `logs/tensorboard`), nous remarquons que la **Train Accuracy** et la **Validation Accuracy** convergent très rapidement vers un score proche de **99 %**. De plus, la matrice de confusion (voir capture **figure_1.2** dans le dossier `logs/tensorboard`) confirme cette excellente performance : le modèle classe correctement **119 images sur 120**, soit un score de **30/30** pour les classes **badge**, **briquet** et **téléphone**.
+
+* **Analyse (Biais et Variance) :**
+Le modèle ne présente **aucun problème de Biais (Underfitting)** puisque sa précision globale est très élevée. Il ne souffre pas non plus de **Variance (Overfitting)** : les courbes d'entraînement et de validation restent très proches durant tout l'apprentissage, ce qui traduit une excellente capacité de généralisation.
+
+* **Analyse des erreurs :**
+La matrice de confusion révèle une seule erreur marginale : une image de **background** est prédite comme **téléphone**. Cette confusion peut s'expliquer par un reflet, une ombre ou une texture présente dans le fond de l'image qui a été interprétée comme la surface lisse et brillante d'un téléphone.
+
+---
 
 ## Experiment 2 : Modèle Final
 #### 1. Analyse des performances et du Biais / Variance
