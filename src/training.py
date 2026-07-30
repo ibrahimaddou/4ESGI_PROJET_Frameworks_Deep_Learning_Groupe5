@@ -84,13 +84,30 @@ def train_model():
 
     # ── 4. PHASE 2 : FINE-TUNING (Dégel des couches profondes) ──────────────
     print("\n>>> [PHASE 2] Fine-Tuning : Affinage des couches profondes...")
-    # On reconstruit et/ou recompile le modèle en mode Fine-Tuning
-    # (Ou on applique directement la logique sur le modèle existant)
+
+    # 1. On dégèle l'ensemble du modèle principal
     model.trainable = True
-    for layer in model.layers[0].layers[
-        :100
-    ]:  # Gel des 100 premières couches du base_model
-        layer.trainable = False
+
+    # 2. On récupère dynamiquement le modèle de base (ex: MobileNetV2)
+    #    Il s'agit de la couche qui contient elle-même des sous-couches
+    base_model = None
+    for layer in model.layers:
+        if isinstance(layer, tf.keras.Model):
+            base_model = layer
+            break
+
+    # 3. On gèle les 100 premières couches du modèle de base (Fine-tuning des couches profondes)
+    if base_model is not None:
+        base_model.trainable = True
+        for layer in base_model.layers[:100]:
+            layer.trainable = False
+        print(
+            f" -> {len(base_model.layers) - 100} couches dégelées sur {len(base_model.layers)} dans le modèle de base."
+        )
+    else:
+        # Fallback de sécurité si l'architecture n'est pas imbriquée
+        for layer in model.layers[: -3]:  # On garde seulement la tête dégelée
+            layer.trainable = False
 
     # IMPORTANT : Le learning rate doit être réduit (ex: divisé par 10)
     model.compile(

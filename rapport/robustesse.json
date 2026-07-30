@@ -4,192 +4,192 @@
     "h5": "models/export\\model_final.h5"
   },
   "inference_speed": {
-    "fps": 10.6,
-    "ms_per_image": 94.33
+    "fps": 15.05,
+    "ms_per_image": 66.43
   },
   "robustness": {
     "normal": {
-      "accuracy_pct": 80.0,
+      "accuracy_pct": 83.33,
       "total": 120,
-      "failures_count": 24,
+      "failures_count": 20,
       "failures_sample": [
         {
-          "image": "badge_009.jpg",
-          "true": "badge",
+          "image": "background_055.jpg",
+          "true": "background",
           "predicted": "telephone",
-          "confidence": 0.589
+          "confidence": 0.427
         },
         {
-          "image": "badge_012.jpg",
+          "image": "badge_055.jpg",
           "true": "badge",
           "predicted": "telephone",
-          "confidence": 0.565
+          "confidence": 0.403
         },
         {
-          "image": "badge_018.jpg",
+          "image": "badge_056.jpg",
           "true": "badge",
           "predicted": "telephone",
-          "confidence": 0.458
+          "confidence": 0.544
         },
         {
-          "image": "badge_019.jpg",
+          "image": "badge_068.jpg",
           "true": "badge",
           "predicted": "telephone",
-          "confidence": 0.507
+          "confidence": 0.513
         },
         {
-          "image": "badge_029.jpg",
+          "image": "badge_073.jpg",
           "true": "badge",
           "predicted": "telephone",
-          "confidence": 0.483
+          "confidence": 0.51
         }
       ]
     },
     "bright_x1.5": {
-      "accuracy_pct": 65.0,
+      "accuracy_pct": 75.0,
       "total": 120,
-      "failures_count": 42,
+      "failures_count": 30,
       "failures_sample": [
         {
           "image": "background_055.jpg",
           "true": "background",
-          "predicted": "briquet",
-          "confidence": 0.448
+          "predicted": "telephone",
+          "confidence": 0.33
         },
         {
-          "image": "badge_009.jpg",
-          "true": "badge",
-          "predicted": "telephone",
-          "confidence": 0.674
+          "image": "background_141.jpg",
+          "true": "background",
+          "predicted": "briquet",
+          "confidence": 0.614
         },
         {
           "image": "badge_012.jpg",
           "true": "badge",
           "predicted": "telephone",
-          "confidence": 0.563
+          "confidence": 0.517
         },
         {
-          "image": "badge_018.jpg",
+          "image": "badge_045.jpg",
           "true": "badge",
           "predicted": "telephone",
-          "confidence": 0.584
+          "confidence": 0.475
         },
         {
-          "image": "badge_019.jpg",
+          "image": "badge_055.jpg",
           "true": "badge",
           "predicted": "telephone",
-          "confidence": 0.636
+          "confidence": 0.404
         }
       ]
     },
     "dark_x0.4": {
-      "accuracy_pct": 52.5,
+      "accuracy_pct": 65.83,
       "total": 120,
-      "failures_count": 57,
+      "failures_count": 41,
       "failures_sample": [
         {
-          "image": "badge_009.jpg",
+          "image": "badge_055.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.619
+        },
+        {
+          "image": "badge_064.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.556
+        },
+        {
+          "image": "badge_068.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.472
+        },
+        {
+          "image": "badge_069.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.404
+        },
+        {
+          "image": "badge_073.jpg",
           "true": "badge",
           "predicted": "telephone",
           "confidence": 0.52
-        },
-        {
-          "image": "badge_012.jpg",
-          "true": "badge",
-          "predicted": "telephone",
-          "confidence": 0.514
-        },
-        {
-          "image": "badge_018.jpg",
-          "true": "badge",
-          "predicted": "telephone",
-          "confidence": 0.572
-        },
-        {
-          "image": "badge_019.jpg",
-          "true": "badge",
-          "predicted": "telephone",
-          "confidence": 0.51
-        },
-        {
-          "image": "badge_026.jpg",
-          "true": "badge",
-          "predicted": "telephone",
-          "confidence": 0.507
         }
       ]
     },
     "blur_k15": {
-      "accuracy_pct": 27.5,
+      "accuracy_pct": 48.33,
       "total": 120,
-      "failures_count": 87,
+      "failures_count": 62,
       "failures_sample": [
-        {
-          "image": "badge_009.jpg",
-          "true": "badge",
-          "predicted": "background",
-          "confidence": 0.532
-        },
-        {
-          "image": "badge_012.jpg",
-          "true": "badge",
-          "predicted": "background",
-          "confidence": 0.622
-        },
         {
           "image": "badge_018.jpg",
           "true": "badge",
-          "predicted": "background",
-          "confidence": 0.68
+          "predicted": "telephone",
+          "confidence": 0.366
         },
         {
           "image": "badge_019.jpg",
           "true": "badge",
           "predicted": "background",
-          "confidence": 0.747
+          "confidence": 0.409
         },
         {
           "image": "badge_026.jpg",
           "true": "badge",
           "predicted": "background",
-          "confidence": 0.538
+          "confidence": 0.656
+        },
+        {
+          "image": "badge_029.jpg",
+          "true": "badge",
+          "predicted": "background",
+          "confidence": 0.553
+        },
+        {
+          "image": "badge_030.jpg",
+          "true": "badge",
+          "predicted": "background",
+          "confidence": 0.643
         }
       ]
     },
     "noise_sigma30": {
-      "accuracy_pct": 55.0,
+      "accuracy_pct": 53.33,
       "total": 120,
-      "failures_count": 54,
+      "failures_count": 56,
       "failures_sample": [
         {
-          "image": "background_055.jpg",
-          "true": "background",
-          "predicted": "briquet",
-          "confidence": 0.588
-        },
-        {
-          "image": "badge_009.jpg",
+          "image": "badge_030.jpg",
           "true": "badge",
           "predicted": "telephone",
-          "confidence": 0.314
+          "confidence": 0.355
         },
         {
-          "image": "badge_012.jpg",
+          "image": "badge_031.jpg",
           "true": "badge",
           "predicted": "telephone",
-          "confidence": 0.426
+          "confidence": 0.363
         },
         {
-          "image": "badge_018.jpg",
+          "image": "badge_055.jpg",
           "true": "badge",
           "predicted": "background",
-          "confidence": 0.343
+          "confidence": 0.404
         },
         {
-          "image": "badge_026.jpg",
+          "image": "badge_056.jpg",
           "true": "badge",
           "predicted": "telephone",
-          "confidence": 0.419
+          "confidence": 0.649
+        },
+        {
+          "image": "badge_064.jpg",
+          "true": "badge",
+          "predicted": "telephone",
+          "confidence": 0.449
         }
       ]
     }
